@@ -6,18 +6,10 @@ function Homepage() {
   const [searchInput, setSearchInput] = useState("");
 
   const getPosts = async () => {
-    if (searchInput.includes(" ")) {
-      const modifiedSearchInput = searchInput.trimEnd().replaceAll(" ", "&");
-      const response = await axios.get(
-        `http://localhost:4001/trips?keywords=${modifiedSearchInput}`
-      );
-      setPosts(response.data.data);
-    } else {
-      const response = await axios.get(
-        `http://localhost:4001/trips?keywords=${searchInput}`
-      );
-      setPosts(response.data.data);
-    }
+    const response = await axios.get(
+      `http://localhost:4001/trips?keywords=${searchInput}`
+    );
+    setPosts(response.data.data);
   };
 
   useEffect(() => {
@@ -32,24 +24,28 @@ function Homepage() {
   };
 
   const additionalPhotos = (photos) => {
-    const clonePhotos = [...photos];
-    clonePhotos.shift();
-    return clonePhotos.map((item, index) => {
+    const photosExceptFirst = [...photos];
+    photosExceptFirst.shift();
+    return photosExceptFirst.map((item, index) => {
       return <img key={index} src={item} />;
     });
   };
 
   const renderCategory = (tags) => {
-    const handleTagClick = (tag) => {
-      setSearchInput(searchInput + tag + " ");
-    };
+    const tagsExceptLast = [...tags];
+    const lastTag = tagsExceptLast.pop();
 
-    const cloneTags = [...tags];
-    const lastTag = cloneTags.pop();
+    const handleTagClick = (tag) => {
+      if (searchInput.includes(tag)) {
+        return;
+      } else {
+        setSearchInput(searchInput ? `${searchInput} ${tag}` : tag);
+      }
+    };
 
     return (
       <ul>
-        {cloneTags.map((item, index) => (
+        {tagsExceptLast.map((item, index) => (
           <li
             onClick={() => {
               handleTagClick(item);
@@ -86,7 +82,7 @@ function Homepage() {
         เที่ยวไหนดี
       </h1>
       <div className="search-box">
-        <p className="search">ค้นหาที่เที่ยว</p>
+        <p className="search-label">ค้นหาที่เที่ยว</p>
         <input
           type="text"
           value={searchInput}

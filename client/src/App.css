@@ -27,17 +27,28 @@
   margin-right: auto;
   margin-bottom: 1rem;
 }
-label {
+
+.search-label {
   width: 90px;
   font-size: large;
   color: rgb(91, 91, 91);
+  align-self: center;
 }
 
 input {
   border: rgb(206, 206, 206) solid 1px;
+  color: var(--blue-text-color);
   border-radius: 5px;
+  font-size: medium;
   width: 100%;
   flex: 1;
+  height: 28px;
+  padding-left: 8px;
+}
+
+input:focus {
+  outline: none;
+  border: solid 2px var(--blue-text-color);
 }
 
 .section {
