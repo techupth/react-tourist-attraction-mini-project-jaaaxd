@@ -12,16 +12,11 @@ function Homepage() {
         `http://localhost:4001/trips?keywords=${modifiedSearchInput}`
       );
       setPosts(response.data.data);
-      console.log(
-        "mo",
-        `http://localhost:4001/trips?keywords=${modifiedSearchInput}`
-      );
     } else {
       const response = await axios.get(
         `http://localhost:4001/trips?keywords=${searchInput}`
       );
       setPosts(response.data.data);
-      console.log(`http://localhost:4001/trips?keywords=${searchInput}`);
     }
   };
 
