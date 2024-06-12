@@ -9,14 +9,18 @@
   box-sizing: border-box;
 }
 
+/* ---- Header ---- */
+
 .main-title {
   color: var(--blue-text-color);
   text-align: center;
   font-weight: 500;
   font-size: 3.3rem;
-  margin-top: 4rem;
+  margin-top: 3.5rem;
   margin-bottom: 2rem;
 }
+
+/* ---- Search Box ---- */
 
 .search-box {
   display: flex;
@@ -51,6 +55,8 @@ input:focus {
   border: solid 2px var(--blue-text-color);
 }
 
+/* ---- Section ---- */
+
 .section {
   color: var(--gray-text-color);
   border-bottom: solid 2px rgb(203, 203, 203);
@@ -76,15 +82,13 @@ input:focus {
   align-self: self-end;
 }
 
-input:active {
-  border: none;
-}
+/* ---- Posts ---- */
 
 .post-list {
   margin-left: auto;
   margin-right: auto;
   width: 87%;
-  margin-bottom: 4cm;
+  margin-bottom: 4rem;
 }
 
 .post-item {
@@ -99,6 +103,7 @@ input:active {
   min-width: 290px;
   height: 205px;
 }
+
 .post-details {
   width: 100%;
   line-height: 30px;
@@ -151,6 +156,7 @@ li:hover {
   display: flex;
   justify-content: space-between;
 }
+
 .additional-photo {
   margin-top: 10px;
   display: flex;
